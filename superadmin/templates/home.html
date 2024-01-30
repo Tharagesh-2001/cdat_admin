@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Super Admin Home{% endblock %}
+
+{% block header %}Welcome to Super Admin Homepage{% endblock %}
+
+{% block content %}
+    <div class="welcome-message">
+        <p>Hello, {% if user.is_authenticated %}{{ user.username }}{% else %}Guest{% endif %}!</p>
+        <p>This is the home page. Add your content here.</p>
+    </div>
+{% endblock %}
+
+<style>
+    .welcome-message {
+        margin: 20px;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .welcome-message p {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 10px;
+    }
+
+    /* Add more styles as needed for your specific content */
+</style>
