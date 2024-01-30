@@ -1,0 +1,12 @@
+<!-- organization/templates/delete_organization.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Delete Organization</h2>
+  <p>Are you sure you want to delete "{{ organization.name }}"?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+  </form>
+  <a href="{% url 'organization_profile' %}">Cancel</a>
+{% endblock %}
