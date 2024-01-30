@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Organization{% endblock %}
+
+{% block header %}Create Organization{% endblock %}
+
+{% block content %}
+    <h2>Create Organization</h2>
+    <form method="post" action="{% url 'create_organization' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Organization</button>
+    </form>
+{% endblock %}
