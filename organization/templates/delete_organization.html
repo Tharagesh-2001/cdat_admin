@@ -10,7 +10,7 @@
         {% csrf_token %}
         <button type="submit" class="delete-button">Delete</button>
       </form>
-      <a href="{% url 'organization_profile' %}" class="cancel-link">Cancel</a>
+      <a href="{% url 'organization_home' pk=organization.organization_id %}" class="cancel-link">Cancel</a>
     </div>
   </div>
   <style>

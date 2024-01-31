@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}Organization Home{% endblock %}
+
+{% block header %}Organization Home{% endblock %}
+
+{% block content %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .content-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+
+        .welcome-message {
+            margin-bottom: 20px;
+        }
+
+        .action-links {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .action-link {
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .update-link {
+            color: #007bff;
+            background-color: #fff;
+        }
+
+        .delete-link {
+            color: #fff;
+            background-color: #dc3545;
+        }
+    </style>
+
+    <div class="container">
+        <h2 class="page-title">Organization Home</h2>
+        <div class="content-box">
+            <p class="welcome-message">Welcome to your organization's home page, {{ organization.organization_name }}!</p>
+            <p>What would you like to do?</p>
+            <div class="action-links">
+                <a href="{% url 'update_organization' pk=organization.pk %}" class="action-link update-link">Update</a>
+                <a href="{% url 'delete_organization' pk=organization.pk %}" class="action-link delete-link">Delete</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

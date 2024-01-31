@@ -11,11 +11,10 @@
             {% for organization in organizations %}
                 <li class="organization-item">
                     <span class="organization-info">
-                        {{ organization.organization_name }} - {{ organization.email }} - {{ organization.username }}
+                        {{ organization.organization_name }}
                     </span>
                     <span class="organization-actions">
-                        (<a href="{% url 'update_organization' pk=organization.pk %}">Update</a>)
-                        (<a href="{% url 'delete_organization' pk=organization.pk %}">Delete</a>)
+                        (<a href="{% url 'organization_home' pk=organization.organization_id %}">Go to Home</a>)
                     </span>
                 </li>
             {% endfor %}

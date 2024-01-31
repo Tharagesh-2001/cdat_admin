@@ -13,7 +13,7 @@
             {{ form.as_p }}
             <button type="submit" class="update-button">Update</button>
         </form>
-        <a href="{% url 'organization_profile' %}" class="cancel-link">Cancel</a>
+        <a href="{% url 'organization_home' pk=organization.organization_id %}" class="cancel-link">Cancel</a>
     </div>
     <style>
       .container {
@@ -50,5 +50,3 @@
       }
     </style>
 {% endblock %}
-
-

@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .forms import OrganizationCreationForm
 from superadmin.models import UserProfile
 from .models import Organization
-from django.http import HttpResponseRedirect
-from django.urls import reverse
 
+def organization_profile(request):
+    organizations = Organization.objects.all()
+    return render(request, 'organization_profile.html', {'organizations': organizations})
 
 def create_organization(request):
     if request.method == 'POST':
@@ -19,11 +21,6 @@ def create_organization(request):
 
     return render(request, 'create_organization.html', {'form': form})
 
-
-def organization_profile(request):
-    organizations = Organization.objects.all()
-    return render(request, 'organization_profile.html', {'organizations': organizations})
-
 def update_organization(request, pk):
     organization = get_object_or_404(Organization, pk=pk)
 
@@ -31,7 +28,7 @@ def update_organization(request, pk):
         form = OrganizationCreationForm(request.POST, instance=organization)
         if form.is_valid():
             form.save()
-            return redirect('organization_profile')
+            return redirect('organization_home', pk=organization.pk)
     else:
         form = OrganizationCreationForm(instance=organization)
 
@@ -42,6 +39,10 @@ def delete_organization(request, pk):
     
     if request.method == 'POST':
         organization.delete()
-        return redirect('organization_profile')
+        return redirect('organization_home', pk=organization.pk)
 
     return render(request, 'delete_organization.html', {'organization': organization})
+
+def organization_home(request, pk):
+    organization = get_object_or_404(Organization, pk=pk)
+    return render(request, 'organization_home.html', {'organization': organization})
