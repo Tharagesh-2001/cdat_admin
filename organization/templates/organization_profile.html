@@ -5,14 +5,56 @@
 {% block header %}Organization Profile{% endblock %}
 
 {% block content %}
-    <h2>Organization Profile</h2>
-    <ul>
-        {% for organization in organizations %}
-            <li>
-                {{ organization.organization_name }} - {{ organization.email }} - {{ organization.username }}
-                (<a href="{% url 'update_organization' pk=organization.pk %}">Update</a>)
-                (<a href="{% url 'delete_organization' pk=organization.pk %}">Delete</a>)
-            </li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <h2>Organization Profile</h2>
+        <ul class="organization-list">
+            {% for organization in organizations %}
+                <li class="organization-item">
+                    <span class="organization-info">
+                        {{ organization.organization_name }} - {{ organization.email }} - {{ organization.username }}
+                    </span>
+                    <span class="organization-actions">
+                        (<a href="{% url 'update_organization' pk=organization.pk %}">Update</a>)
+                        (<a href="{% url 'delete_organization' pk=organization.pk %}">Delete</a>)
+                    </span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .organization-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .organization-item {
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .organization-info {
+            flex: 1;
+        }
+        
+        .organization-actions a {
+            margin-left: 10px;
+            text-decoration: none;
+            color: #3498db;
+        }
+        
+        .organization-actions a:hover {
+            text-decoration: underline;
+            color: #1b6ca8;
+        }
+    </style>
 {% endblock %}
+

@@ -2,11 +2,58 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Delete Organization</h2>
-  <p>Are you sure you want to delete "{{ organization.name }}"?</p>
-  <form method="post">
-    {% csrf_token %}
-    <button type="submit">Delete</button>
-  </form>
-  <a href="{% url 'organization_profile' %}">Cancel</a>
+  <div class="container">
+    <div class="delete-organization-form">
+      <h2>Delete Organization</h2>
+      <p>Are you sure you want to delete "{{ organization.name }}"?</p>
+      <form method="post" class="delete-form">
+        {% csrf_token %}
+        <button type="submit" class="delete-button">Delete</button>
+      </form>
+      <a href="{% url 'organization_profile' %}" class="cancel-link">Cancel</a>
+    </div>
+  </div>
+  <style>
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  
+    .delete-organization-form {
+      text-align: center;
+      margin-top: 50px;
+    }
+  
+    .delete-organization-form h2 {
+      color: #333;
+    }
+  
+    .delete-organization-form p {
+      color: #666;
+    }
+  
+    .delete-form {
+      margin-top: 20px;
+    }
+  
+    .delete-button {
+      background-color: #d9534f;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+    }
+  
+    .delete-button:hover {
+      background-color: #c9302c;
+    }
+  
+    .cancel-link {
+      display: block;
+      margin-top: 10px;
+      text-decoration: none;
+      color: #333;
+    }
+  </style>
 {% endblock %}
+

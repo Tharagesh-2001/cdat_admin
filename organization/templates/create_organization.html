@@ -5,10 +5,41 @@
 {% block header %}Create Organization{% endblock %}
 
 {% block content %}
-    <h2>Create Organization</h2>
-    <form method="post" action="{% url 'create_organization' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Create Organization</button>
-    </form>
+    <div class="form-container">
+        <h2 style="text-align: center;">Create Organization</h2>
+        <form class="organization-form" method="post" action="{% url 'create_organization' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="create-button">Create Organization</button>
+        </form>
+    </div>
+    <style>
+        .form-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .organization-form {
+        display: flex;
+        flex-direction: column;
+        }
+
+        .create-button {
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+        margin-top: 10px;
+        }
+
+        .create-button:hover {
+        background-color: #2980b9;
+        }
+    </style>
 {% endblock %}
