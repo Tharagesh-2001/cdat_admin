@@ -1,11 +1,10 @@
-<!-- organization/templates/delete_organization.html -->
 {% extends 'base.html' %}
 
 {% block content %}
   <div class="container">
     <div class="delete-organization-form">
       <h2>Delete Organization</h2>
-      <p>Are you sure you want to delete "{{ organization.name }}"?</p>
+      <p>Are you sure you want to delete "{{ organization.organization_name }}"?</p>
       <form method="post" class="delete-form">
         {% csrf_token %}
         <button type="submit" class="delete-button">Delete</button>

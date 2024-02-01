@@ -9,37 +9,69 @@
         <h2 style="text-align: center;">Create Organization</h2>
         <form class="organization-form" method="post" action="{% url 'create_organization' %}">
             {% csrf_token %}
-            {{ form.as_p }}
+            <div class="form-group">
+                <label for="{{ form.organization_name.id_for_label }}">Organization Name:</label>
+                {{ form.organization_name }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.email.id_for_label }}">Email:</label>
+                {{ form.email }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.username.id_for_label }}">Username:</label>
+                {{ form.username }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.password.id_for_label }}">Password:</label>
+                {{ form.password }}
+            </div>
             <button type="submit" class="create-button">Create Organization</button>
         </form>
     </div>
     <style>
         .form-container {
-        max-width: 400px;
-        margin: 0 auto;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .organization-form {
-        display: flex;
-        flex-direction: column;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
 
         .create-button {
-        background-color: #3498db;
-        color: #fff;
-        padding: 10px;
-        border: none;
-        cursor: pointer;
-        border-radius: 4px;
-        margin-top: 10px;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
         }
 
         .create-button:hover {
-        background-color: #2980b9;
+            background-color: #2980b9;
         }
     </style>
 {% endblock %}

@@ -45,7 +45,6 @@
             padding: 20px;
         }
 
-        /* Add more styles as needed for your specific content */
     </style>
 </head>
 <body>
@@ -54,9 +53,10 @@
         <nav>
             <ul>
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'create_organization' %}">Create Organization</a></li>
                     <li><a href="{% url 'organization_profile' %}">Organization Profile</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
 
                 {% else %}
                     <li><a href="{% url 'login' %}">Login</a></li>
